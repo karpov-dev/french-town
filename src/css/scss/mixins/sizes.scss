@@ -1,0 +1,22 @@
+@mixin size-inherit {
+  @include height-inherit;
+  @include width-inherit;
+}
+
+@mixin height-inherit {
+  height: inherit;
+}
+
+@mixin width-inherit {
+  width: inherit;
+}
+
+@mixin fixed-zero {
+  position: fixed;
+  @include left-top-zero;
+}
+
+@mixin left-top-zero{
+  left: 0;
+  top: 0;
+}

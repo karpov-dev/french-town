@@ -15,7 +15,7 @@
   const menuItems = ref<Array<IHeaderMenu>>([]);
 
   onMounted(async () => {
-    menuItems.value = (await DataManager.getCollection(DataManager.COLLECTIONS.HEADER_MENU))
+    menuItems.value = await DataManager.getMenuItems();
   });
 </script>
 

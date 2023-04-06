@@ -9,7 +9,7 @@
 
   const props = defineProps<{
     geoPoint: IGeopoint,
-    points?: [];
+    points?: any;
   }>();
 
   //@ts-ignore
@@ -17,13 +17,15 @@
 
   function init(){
     //@ts-ignore
-    const myMap = new ymaps.Map("map", {
+    const yandexMap = new ymaps.Map("map", {
       center: [props.geoPoint._lat, props.geoPoint._long],
       zoom: 14
     });
 
-    props.points?.forEach(point => {
-      myMap.geoObjects.add(point);
+    const points = props.points as Array<IGeopoint>;
+
+    points?.forEach(point => {
+      yandexMap.geoObjects.add(point);
     })
   }
 </script>

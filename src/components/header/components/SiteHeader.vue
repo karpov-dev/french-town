@@ -21,7 +21,6 @@
     top: 0;
     --svg-icon__filter: 1;
     z-index: 2;
-    width: 100%;
     color: white;
     font-size: 14px;
   }

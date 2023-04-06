@@ -6,6 +6,13 @@ export const routes = {
     props: true
   },
 
+  service: {
+    path: '/service',
+    name: 'service',
+    component: () => import('../pages/ServicePage.vue'),
+    props: true
+  },
+
   about: {
     path: '/about',
     name: 'about',

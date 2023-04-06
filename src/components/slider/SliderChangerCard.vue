@@ -7,10 +7,7 @@
       </div>
     </transition>
 
-    <div v-if="!hideButtons" class="buttons">
-      <button class="button button__more">Подробнее</button>
-      <button class="button button__schedule" @click="onSchedule">Записаться</button>
-    </div>
+    <slot/>
   </div>
 </template>
 
@@ -18,12 +15,7 @@
   const props = defineProps<{
     title: string,
     description: string,
-    hideButtons?: boolean
   }>();
-
-  async function onSchedule() {
-
-  }
 </script>
 
 <style scoped>
@@ -49,43 +41,12 @@
     padding-bottom: 50px;
   }
 
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    gap: 10px;
-  }
-
-  .button {
-    max-width: 250px;
-    padding: 12px;
-    border: 2px solid;
-    border-radius: 6px;
-    font-weight: 800;
-    color: white;
-    font-size: 17px;
-  }
-
-  .button__more {
-    background-color: transparent;
-    border-color: white;
-  }
-
-  .button__schedule {
-    background-color: dodgerblue;
-    border-color: dodgerblue;
-  }
-
   @media only screen and (max-width: 600px) {
     .preview-card__title {
       font-size: 30px;
     }
 
     .description {
-      font-size: 15px;
-    }
-
-    .button {
       font-size: 15px;
     }
   }

@@ -45,17 +45,14 @@
   });
 
   onMounted(async () => {
-    menuItems.value = (await DataManager.getCollection(DataManager.COLLECTIONS.HEADER_MENU));
-
-    socialMedias.value = (await DataManager.getCollection(DataManager.COLLECTIONS.SOCIAL_MEDIA))?.filter(
-        (media: ISocialMedia) => media.isPhoneAvailable
-    ) as Array<ISocialMedia>;
+    menuItems.value = await DataManager.getMenuItems();
+    socialMedias.value = (await DataManager.getSocialMedias())?.filter((media: ISocialMedia) => media.isPhoneAvailable) as Array<ISocialMedia>;
 
     addEventListener('scroll', onScroll);
   });
 
   function onScroll() {
-    isActiveHeader.value = window.scrollY > 200;
+    isActiveHeader.value = window.scrollY > 100;
   }
 
   function onOpen() {

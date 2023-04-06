@@ -42,8 +42,8 @@
   const socialMedias = ref<Array<ISocialMedia>>([]);
 
   onMounted(async () => {
-    service.value = (await DataManager.getCollection(DataManager.COLLECTIONS.SERVICE))[0] as IService;
-    socialMedias.value = (await DataManager.getCollection(DataManager.COLLECTIONS.SOCIAL_MEDIA)) as Array<ISocialMedia>;
+    service.value = await DataManager.getService();
+    socialMedias.value = await DataManager.getSocialMedias();
   })
 </script>
 

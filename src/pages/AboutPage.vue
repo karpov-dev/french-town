@@ -1,26 +1,38 @@
 <template>
-  <ui-slider>
+  <slider-page title="О нас" description="Сервис Renault, Peugeot и Citroen в Москве “French Town”"/>
 
-  </ui-slider>
+  <div class="content__container">
+    <div class="content__items">
+      <card-post-block title="Сервис Renault, Peugeot и Citroen в Москве “French Town”">
+        Мы с 2016 года занимаемся автомобилями французских марок. Благодаря тому, что через наши стены каждый день проходит множество автомобилей, наши специалисты обладают большим опытом работы с ними и являются одними из лучших в своей области.
 
-  <ui-info-block title="О нас" page="Сервис Renault, Peugeot и Citroen в Москве “French Town”">
-    Мы с 2016 года занимаемся автомобилями французских марок. Благодаря тому, что через наши стены каждый день проходит множество автомобилей, наши специалисты обладают большим опытом работы с ними и являются одними из лучших в своей области.
+        Перед работами мы стараемся проконсультировать и ответить на все вопросы, возникающие у наших клиентов. Поэтому не стесняйтесь – пишите или звоните.
 
-    Перед работами мы стараемся проконсультировать и ответить на все вопросы, возникающие у наших клиентов. Поэтому не стесняйтесь – пишите или звоните.
+        Записаться на обслуживание в наш автосервис мы можете следующими способами: обратиться к нам по телефону, написать в WhatsApp, Telegram, Viber или же записаться через сайт.
+      </card-post-block>
 
-    Записаться на обслуживание в наш автосервис мы можете следующими способами: обратиться к нам по телефону, написать в WhatsApp, Telegram, Viber или же записаться через сайт.
-  </ui-info-block>
+      <card-post-block title="Почему стоит выбрать нас?" page="ПРЕИМУЩЕСТВА">
+        Гарантии на работы от 3 месяцев
+        На все работы, а также на наше установленное оборудование предоставляется гарантия
+
+        Работаем с французскими автомобилями с 2016 года
+        Наши мастера имеют большой практический опыт за плечами и знают свое дело.
+
+        Собственный склад автозапчастей
+        Наиболее часто используемые запасные части и детали для автомобилей мы имеем в наличии в нашем автосервисе, поэтому вам не придётся ждать их доставки.
+
+      </card-post-block>
+
+      <about-contacts/>
+      <about-find-us-on-map/>
+    </div>
+  </div>
+
 </template>
 
 <script setup lang="ts">
-import UiSlider from "../components/slider/Slider.vue";
-import UiInfoBlock from "../components/card/CardPostBlock.vue";
+  import SliderPage from "../components/slider/SliderPage.vue";
+  import CardPostBlock from "../components/card/CardPostBlock.vue";
+  import AboutContacts from "../components/about/AboutContacts.vue";
+  import AboutFindUsOnMap from "../components/about/AboutFindUsOnMap.vue";
 </script>
-
-<style scoped lang="scss">
-  .slider {
-    z-index: 1;
-    width: 100vw;
-    height: 50vh;
-  }
-</style>

@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
   const props = defineProps<{
-    page: string,
-    title: string
+    page?: string,
+    title?: string
   }>();
 </script>
 
@@ -20,7 +20,7 @@
   .preview-card {
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 20px;
     text-align: left;
   }
 

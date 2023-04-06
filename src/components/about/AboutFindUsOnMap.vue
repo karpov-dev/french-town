@@ -27,7 +27,7 @@
   });
 
   onMounted(async () => {
-    service.value = (await DataManager.getCollection(DataManager.COLLECTIONS.SERVICE))[0];
+    service.value = await DataManager.getService();
   });
 </script>
 

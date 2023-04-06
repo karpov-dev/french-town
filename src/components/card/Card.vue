@@ -25,6 +25,7 @@
 
   .ui-card__title {
     font-size: 17px;
+    padding-bottom: 15px;
     color: #333;
   }
 
@@ -34,5 +35,6 @@
 
   .ui-card__content {
     height: 100%;
+    font-weight: 400;
   }
 </style>

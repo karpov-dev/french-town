@@ -1,7 +1,7 @@
 <template>
   <card-post-block title="Основные направления" page="Наши услуги">
     <div class="wrap-content__container services-preview__items">
-      <card v-for="serviceType of serviceTypes" class="wrap-content__item" :title="serviceType.name">
+      <card v-for="serviceType of workAreas" class="wrap-content__item" :title="serviceType.name" @click="onOpen(serviceType.id)">
         <service-preview-card :work-area-items="serviceType.types"/>
       </card>
     </div>
@@ -16,15 +16,15 @@
   import {IWorkArea} from "../../db/types";
   import ServicePreviewCard from "./ServicePreviewCard.vue";
 
-  const serviceTypes = ref<Array<IWorkArea>>([]);
+  const workAreas = ref<Array<IWorkArea>>([]);
 
   onMounted(async () => {
-    serviceTypes.value = (await DataManager.getCollection(DataManager.COLLECTIONS.WORK_AREA)) as Array<IWorkArea>;
-
-    for (let serviceType of serviceTypes.value) {
-      serviceType.types = await DataManager.getCollection(DataManager.COLLECTIONS.WORK_AREA_TYPES.replace('{doc}', serviceType.id));
-    }
+    workAreas.value = await DataManager.getWorkAreas();
   });
+
+  function onOpen(id: string) {
+    window.location.href = `/service#${id}`;
+  }
 </script>
 
 <style scoped lang="scss">

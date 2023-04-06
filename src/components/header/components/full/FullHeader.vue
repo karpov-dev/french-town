@@ -24,14 +24,13 @@
   });
 
   function onScroll() {
-    isActiveHeader.value = window.scrollY > 200;
+    isActiveHeader.value = window.scrollY > 100;
   }
 </script>
 
 <style scoped lang="scss">
   .full-header {
     background-color: transparent;
-    padding: 0 100px;
   }
 
   .full-header__contacts {
@@ -44,11 +43,5 @@
 
   .full-header__slim {
     height: 30px;
-  }
-
-  @media only screen and (max-width: 1100px) {
-    .full-header {
-      padding: 0 20px;
-    }
   }
 </style>

@@ -16,8 +16,8 @@
   const menuItems = ref<Array<IHeaderMenu>>([]);
 
   onMounted(async () => {
-    service.value = (await DataManager.getCollection(DataManager.COLLECTIONS.SERVICE))[0];
-    menuItems.value = (await DataManager.getCollection(DataManager.COLLECTIONS.HEADER_MENU))
+    service.value = await DataManager.getService();
+    menuItems.value = await DataManager.getMenuItems();
   });
 </script>
 
@@ -27,6 +27,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 10px;
+    padding: 10px;
   }
 </style>

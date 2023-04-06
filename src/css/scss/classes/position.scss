@@ -1,0 +1,8 @@
+.position-fixed {
+  position: fixed;
+}
+
+.position-fixed__top {
+  @extend .position-fixed;
+  top: 0;
+}

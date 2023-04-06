@@ -1,43 +1,66 @@
 <template>
-  <div style="position: relative">
-    <site-header/>
+  <div class="content">
+    <site-header class="content__item header" :class="{'header__white': isScrolledDown}"/>
 
-    <sd-slider class="pc-slider"/>
-
-    <au-preview/>
-
-    <ui-preview-card page="Контакты" title="Как с нами связаться">
-      бла, бла, бла
-    </ui-preview-card>
-
-    <ui-preview-card page="Наш Instagram" title="Как мы работаем" >
-      бла, бла, бла
-    </ui-preview-card>
-
-    <ft-footer/>
+    <router-view v-slot="{ Component }">
+      <transition>
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
+
+  <ft-footer/>
 </template>
 
 <script setup lang="ts">
-  import SdSlider from "./modules/preview/components/slider/SdSlider.vue";
-  import UiPreviewCard from "./modules/preview/components/card/UiPreviewCard.vue";
-  import FtFooter from "./modules/footer/components/FtFooter.vue";
-  import SiteHeader from "./modules/header/components/SiteHeader.vue";
-  import AuPreview from "./modules/about-us/components/AuPreview.vue";
+  import FtFooter from "./components/footer/SiteFooter.vue";
+  import SiteHeader from "./components/header/components/SiteHeader.vue";
+  import {onMounted, ref} from "vue";
+
+  const isScrolledDown = ref<Boolean>(false);
+
+  onMounted(() => addEventListener('scroll', onScroll));
+
+  function onScroll() {
+    isScrolledDown.value = window.scrollY > 200;
+  }
 </script>
 
 <style scoped>
-  .pc-header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 2;
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content__item {
+    width: 75%;
+    transition: 0.5s all ease-in-out;
+  }
+
+  .header__white {
+    color: black;
+    background-color: white;
     width: 100%;
   }
 
-  .pc-slider {
-    z-index: 1;
-    width: 100vw;
-    height: 100vh;
+  @media only screen and (max-width: 1420px) {
+    .content__item {
+      width: 85%;
+    }
+
+    .header__white {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 1250px) {
+    .content__item {
+      width: 82%;
+    }
+
+    .header__white, .header {
+      width: 100%;
+    }
   }
 </style>

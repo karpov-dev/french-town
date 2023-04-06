@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@toneflix-code/flickity-vue": "^1.0.1",
+    "firebase": "^9.19.1",
     "sass": "^1.60.0",
     "vue": "^3.2.47",
     "vue-3-slider-component": "^0.1.0",
+    "vue-router": "^4.1.6",
     "vuex": "^4.1.0"
   },
   "devDependencies": {

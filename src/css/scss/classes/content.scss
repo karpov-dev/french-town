@@ -1,0 +1,9 @@
+.wrap-content__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.wrap-content__item {
+  flex-grow: 1;
+}

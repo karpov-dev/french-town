@@ -1,13 +1,18 @@
 <template>
-  <slider-page title="Услуги" description="Прайс на основные услуги, предоставляемые автосервисом"/>
+  <transition>
+    <div>
+      <slider-page title="Услуги" description="Прайс на основные услуги, предоставляемые автосервисом"/>
 
-  <div class="content__container">
-    <div class="content__items">
-      <card-post-block page="Услуги" title="Перечень цен на основные услуги">
-        <services/>
-      </card-post-block>
+      <div class="content__container">
+        <div class="content__items">
+          <card-post-block page="Услуги" title="Перечень цен на основные услуги">
+            <services/>
+          </card-post-block>
+        </div>
+      </div>
     </div>
-  </div>
+  </transition>
+
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,6 @@
 export * from './IHeaderMenu';
 export * from './IService';
-export * from './ISlider';
+export * from './ISlide';
 export * from './ISocialMedia';
 export * from './IWorkArea';
 export * from './IWorkAreaItem';

@@ -12,19 +12,25 @@
   import CardPostBlock from "../card/CardPostBlock.vue";
 
   const service = ref<IService>({} as IService);
+  const points = computed(initPoints);
+  let yMapInited = ref<boolean>(false);
 
-  const points = computed(() => {
-    if (!service.value.geoPoint) return [];
+  //@ts-ignore
+  ymaps.ready(() => yMapInited.value = true);
+
+  //TODO: как-то красивее сделать
+  function initPoints() {
+    if (!yMapInited.value || !service.value.geoPoint) return [];
 
     //@ts-ignore
-    const placePoint = new ymaps.Placemark([service.value.geoPoint._lat, service.value.geoPoint._long], {
+    const placePoint = new ymaps.Placemark([service.value.geoPoint.latitude, service.value.geoPoint.longitude], {
       iconContent: `${service.value.address}`
     }, {
       preset: "islands#blueStretchyIcon"
     });
 
     return [placePoint];
-  });
+  }
 
   onMounted(async () => {
     service.value = await DataManager.getService();

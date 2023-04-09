@@ -1,10 +1,12 @@
+import {RouteRecordRaw} from "vue-router";
+
 export const routes = {
   main: {
     path: '/',
     name: 'main',
     component: () => import('../pages/MainPage.vue'),
-    props: true
-  },
+    props: true,
+  } as RouteRecordRaw,
 
   service: {
     path: '/service',
@@ -21,3 +23,6 @@ export const routes = {
   }
 }
 
+export const pages = {
+
+}

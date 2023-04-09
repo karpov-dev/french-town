@@ -1,4 +1,4 @@
 export interface IGeopoint {
-  _lat: number,
-  _long: number
+  latitude: number,
+  longitude: number
 }

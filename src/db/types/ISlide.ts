@@ -1,6 +1,6 @@
 import {IIdentity} from "./IIdentity";
 
-export interface ISlider extends IIdentity {
+export interface ISlide extends IIdentity {
   title: string,
   description: string
 }

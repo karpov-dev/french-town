@@ -1,5 +1,5 @@
 <template>
-  <slider-changer-card :title="slide.title" :description="slide.description">
+  <slider-changer-card v-if="slide" :title="slide.title" :description="slide.description">
     <slot/>
   </slider-changer-card>
 </template>
@@ -8,21 +8,26 @@
   import SliderChangerCard from "./SliderChangerCard.vue";
   import {CONFIG} from "../../config/config";
   import {onMounted, ref} from "vue";
+  import {ISlide} from "../../db/types";
+  import {DataManager} from "../../db/DataManager";
 
-  const slides = Object.values(CONFIG.SLIDER.SLIDES);
-  const slide = ref(slides?.[0]);
+  const slides = ref<Array<ISlide>>([]);
+  const slide = ref();
 
   let slideIndex = 1;
 
-  onMounted(() => {
+  onMounted(async () => {
+    slides.value = await DataManager.getSlides();
+    slide.value = slides.value[0];
+
     setInterval(changeSlide, CONFIG.SLIDER.TIME_TO_CHANGE_MS)
   });
 
   function changeSlide() {
-    slideIndex = (slideIndex < slides.length - 1)
+    slideIndex = (slideIndex < slides.value.length - 1)
         ? slideIndex + 1
         : 0;
 
-    slide.value = slides[slideIndex];
+    slide.value = slides.value[slideIndex];
   }
 </script>

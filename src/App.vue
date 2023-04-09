@@ -1,9 +1,16 @@
 <template>
-  <div class="content__container">
+  <div class="t content__container">
     <site-header class="header content__items" :class="{'header__white': isScrolledDown}"/>
   </div>
 
-  <router-view/>
+  <!--  TODO: подумать с transition-->
+  <div style="min-height: 15vh">
+    <router-view v-slot="{ Component }">
+      <transition>
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
 
   <div class="content__container">
     <about-contacts class="content__items"/>

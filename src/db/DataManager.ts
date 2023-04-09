@@ -1,14 +1,12 @@
 import {DataSelector} from "./DataSelector";
-import {IHeaderMenu, IService, ISocialMedia, IWorkArea} from "./types";
+import {IHeaderMenu, IService, ISlide, ISocialMedia, IWorkArea} from "./types";
 
 export class DataManager {
-
-  private static readonly CACHE: any = {};
 
   public static readonly COLLECTIONS = {
     SERVICE: 'auto-service',
     HEADER_MENU: 'menu',
-    SLIDER: 'slider',
+    SLIDE: 'slider',
     SOCIAL_MEDIA: 'social-media',
     WORK_AREA: 'work-area',
     WORK_AREA_TYPES: 'work-area/{doc}/types'
@@ -36,20 +34,19 @@ export class DataManager {
     return workAreas;
   }
 
-  public static async getSlides() {
-
+  public static async getSlides(): Promise<Array<ISlide>> {
+    return (await DataManager.getCollection(DataManager.COLLECTIONS.SLIDE));
   }
 
   public static async getCollection(collectionName: string): Promise<any> {
-    return this.CACHE.hasOwnProperty(collectionName)
-      ? this.CACHE[collectionName]
-      : this.selectAndCache(collectionName);
-  }
+    const isCollectionCached = sessionStorage.getItem(collectionName);
 
-  private static async selectAndCache(collectionName: string) {
-    this.CACHE[collectionName] = DataSelector.getData(collectionName);
+    if (!isCollectionCached) {
+      sessionStorage.setItem(collectionName, JSON.stringify(await DataSelector.getData(collectionName)));
+    }
 
-    return this.CACHE[collectionName];
+    // @ts-ignore
+    return JSON.parse(sessionStorage.getItem(collectionName));
   }
 
 }

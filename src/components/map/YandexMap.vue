@@ -18,7 +18,7 @@
   function init(){
     //@ts-ignore
     const yandexMap = new ymaps.Map("map", {
-      center: [props.geoPoint._lat, props.geoPoint._long],
+      center: [props.geoPoint.latitude, props.geoPoint.longitude],
       zoom: 14
     });
 

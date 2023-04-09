@@ -1,6 +1,6 @@
 <template>
   <div class="content__container">
-    <schedule-appointment-slider/>
+    <schedule-appointment-slider class="slider"/>
 
     <div class="content__items">
       <about-us-preview/>

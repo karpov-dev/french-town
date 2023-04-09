@@ -5,6 +5,10 @@
 
   <router-view/>
 
+  <div class="content__container">
+    <about-contacts class="content__items"/>
+    <about-find-us-on-map class="content__items"/>
+  </div>
   <ft-footer/>
 </template>
 
@@ -12,6 +16,8 @@
   import FtFooter from "./components/footer/SiteFooter.vue";
   import SiteHeader from "./components/header/components/SiteHeader.vue";
   import {onMounted, ref} from "vue";
+  import AboutContacts from "./components/about/AboutContacts.vue";
+  import AboutFindUsOnMap from "./components/about/AboutFindUsOnMap.vue";
 
   const isScrolledDown = ref<Boolean>(false);
 

@@ -36,6 +36,10 @@ export class DataManager {
     return workAreas;
   }
 
+  public static async getSlides() {
+
+  }
+
   public static async getCollection(collectionName: string): Promise<any> {
     return this.CACHE.hasOwnProperty(collectionName)
       ? this.CACHE[collectionName]

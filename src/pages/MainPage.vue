@@ -5,8 +5,6 @@
     <div class="content__items">
       <about-us-preview/>
       <services-preview/>
-      <about-contacts/>
-      <about-find-us-on-map/>
     </div>
   </div>
 
@@ -15,9 +13,7 @@
 <script setup lang="ts">
   import {onMounted, ref} from "vue";
   import AboutUsPreview from "../components/about/AboutUsPreview.vue";
-  import AboutContacts from "../components/about/AboutContacts.vue";
   import ServicesPreview from "../components/service/ServicesPreview.vue";
-  import AboutFindUsOnMap from "../components/about/AboutFindUsOnMap.vue";
   import ScheduleAppointmentSlider from "../components/schedule/ScheduleAppointmentSlider.vue";
 
   const isScrolledDown = ref<Boolean>(false);

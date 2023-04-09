@@ -23,8 +23,6 @@
 
       </card-post-block>
 
-      <about-contacts/>
-      <about-find-us-on-map/>
     </div>
   </div>
 
@@ -33,6 +31,4 @@
 <script setup lang="ts">
   import SliderPage from "../components/slider/SliderPage.vue";
   import CardPostBlock from "../components/card/CardPostBlock.vue";
-  import AboutContacts from "../components/about/AboutContacts.vue";
-  import AboutFindUsOnMap from "../components/about/AboutFindUsOnMap.vue";
 </script>

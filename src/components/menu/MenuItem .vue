@@ -1,7 +1,7 @@
 <template>
-  <a class="ui-menu__item" :href="props.link">
+  <router-link class="ui-menu__item" :to="props.link">
     {{name}}
-  </a>
+  </router-link>
 </template>
 
 <script setup lang="ts">

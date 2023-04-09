@@ -3,7 +3,6 @@
     <site-header class="header content__items" :class="{'header__white': isScrolledDown}"/>
   </div>
 
-  <!--  TODO: подумать с transition-->
   <div style="min-height: 15vh">
     <router-view v-slot="{ Component }">
       <transition>
@@ -13,8 +12,10 @@
   </div>
 
   <div class="content__container">
-    <about-contacts class="content__items"/>
-    <about-find-us-on-map class="content__items"/>
+    <div class="content__items">
+      <about-contacts/>
+      <about-find-us-on-map/>
+    </div>
   </div>
   <ft-footer/>
 </template>

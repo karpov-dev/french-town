@@ -4,7 +4,7 @@
 
       <div class="work-area__items-grid">
         <template v-for="workAreaTypeItem of workArea.types" :key="workAreaTypeItem.id">
-          <div>{{workAreaTypeItem.name}}</div>
+          <div :id="workArea.id">{{workAreaTypeItem.name}}</div>
           <div style="font-weight: 500">от {{workAreaTypeItem.costFrom}} рублей</div>
         </template>
       </div>
@@ -17,6 +17,8 @@
 <script setup lang="ts">
   import {IWorkArea} from "../../db/types";
   import Card from "../card/Card.vue";
+  import ModalWindow from "../modal/ModalWindow.vue";
+  import ScheduleAppointmentCard from "../schedule/ScheduleAppointmentCard.vue";
 
   const props = defineProps<{
     workArea: IWorkArea

@@ -1,11 +1,35 @@
 <template>
+  <modal-window :is-open="isShowModal" @on:close="onCloseSchedule">
+    <schedule-appointment-card/>
+  </modal-window>
+
   <div class="buttons">
-    <button class="button button__more">Подробнее</button>
-    <button class="button button__schedule">Записаться</button>
+    <button class="button button__more" @click="onAbout">Подробнее</button>
+
+    <button class="button button__schedule" @click="onSchedule">Записаться</button>
   </div>
 </template>
 
 <script setup lang="ts">
+  import {router} from "../../router/router";
+  import {routes} from "../../router/routes";
+  import ModalWindow from "../modal/ModalWindow.vue";
+  import ScheduleAppointmentCard from "./ScheduleAppointmentCard.vue";
+  import {ref} from "vue";
+
+  const isShowModal = ref<boolean>(false);
+
+  function onSchedule() {
+    isShowModal.value = true;
+  }
+
+  function onCloseSchedule() {
+    isShowModal.value = false;
+  }
+
+  function onAbout() {
+    router.push(routes.about.name)
+  }
 </script>
 
 <style scoped lang="scss">
@@ -14,16 +38,6 @@
     flex-direction: row;
     justify-content: left;
     gap: 10px;
-  }
-
-  .button {
-    max-width: 250px;
-    padding: 12px;
-    border: 2px solid;
-    border-radius: 6px;
-    font-weight: 800;
-    color: white;
-    font-size: 17px;
   }
 
   .button__more {

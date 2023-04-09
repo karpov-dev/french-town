@@ -6,6 +6,9 @@ export interface IService extends IIdentity {
   phone: string,
   workTime: string,
   description: string,
+  aboutShort: string,
+  about: string,
+  whySelectUs: string,
   email: string,
   geoPoint: IGeopoint
 }

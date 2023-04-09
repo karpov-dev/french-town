@@ -15,6 +15,7 @@
   import {DataManager} from "../../db/DataManager";
   import {IWorkArea} from "../../db/types";
   import ServicePreviewCard from "./ServicePreviewCard.vue";
+  import {router} from "../../router/router";
 
   const workAreas = ref<Array<IWorkArea>>([]);
 
@@ -23,7 +24,7 @@
   });
 
   function onOpen(id: string) {
-    window.location.href = `/service#${id}`;
+    router.push(`/service#${id}`);
   }
 </script>
 

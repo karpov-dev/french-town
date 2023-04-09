@@ -5,24 +5,13 @@
 
       <div class="content__container">
         <div class="content__items">
+
           <card-post-block title="Сервис Renault, Peugeot и Citroen в Москве “French Town”">
-            Мы с 2016 года занимаемся автомобилями французских марок. Благодаря тому, что через наши стены каждый день проходит множество автомобилей, наши специалисты обладают большим опытом работы с ними и являются одними из лучших в своей области.
-
-            Перед работами мы стараемся проконсультировать и ответить на все вопросы, возникающие у наших клиентов. Поэтому не стесняйтесь – пишите или звоните.
-
-            Записаться на обслуживание в наш автосервис мы можете следующими способами: обратиться к нам по телефону, написать в WhatsApp, Telegram, Viber или же записаться через сайт.
+            <div v-html="service.about"></div>
           </card-post-block>
 
           <card-post-block title="Почему стоит выбрать нас?" page="ПРЕИМУЩЕСТВА">
-            Гарантии на работы от 3 месяцев
-            На все работы, а также на наше установленное оборудование предоставляется гарантия
-
-            Работаем с французскими автомобилями с 2016 года
-            Наши мастера имеют большой практический опыт за плечами и знают свое дело.
-
-            Собственный склад автозапчастей
-            Наиболее часто используемые запасные части и детали для автомобилей мы имеем в наличии в нашем автосервисе, поэтому вам не придётся ждать их доставки.
-
+            <div v-html="service.whySelectUs"></div>
           </card-post-block>
         </div>
       </div>
@@ -34,4 +23,13 @@
 <script setup lang="ts">
   import SliderPage from "../components/slider/SliderPage.vue";
   import CardPostBlock from "../components/card/CardPostBlock.vue";
+  import {IService} from "../db/types";
+  import {onMounted, ref} from "vue";
+  import {DataManager} from "../db/DataManager";
+
+  const service = ref<IService>({} as IService);
+
+  onMounted(async () => {
+    service.value = await DataManager.getService();
+  })
 </script>

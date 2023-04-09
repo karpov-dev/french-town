@@ -1,12 +1,15 @@
 <template>
   <div class="services">
-    <spinner v-if="isLoading"/>
+    <modal-window :is-open="isShowModal" @on:close="onCloseSchedule">
+      <schedule-appointment-card/>
+    </modal-window>
 
     <div class="services__content wrap-content__container">
       <service-item class="wrap-content__item"
                     v-for="workArea of workAreas"
                     :work-area="workArea"
                     :key="workArea.id"
+                    @click="onSchedule"
       ></service-item>
     </div>
   </div>
@@ -18,15 +21,24 @@
   import {DataManager} from "../../db/DataManager";
   import ServiceItem from "./ServiceItem.vue";
   import Spinner from "../spinners/Spinner.vue";
+  import ModalWindow from "../modal/ModalWindow.vue";
+  import ScheduleAppointmentCard from "../schedule/ScheduleAppointmentCard.vue";
 
   const workAreas = ref<Array<IWorkArea>>([]);
-  const isLoading = ref<boolean>(false);
 
   onMounted(async () => {
-    isLoading.value = true;
     workAreas.value = await DataManager.getWorkAreas();
-    isLoading.value = false;
   });
+
+  const isShowModal = ref<boolean>(false);
+
+  function onSchedule() {
+    isShowModal.value = true;
+  }
+
+  function onCloseSchedule() {
+    isShowModal.value = false;
+  }
 </script>
 
 <style scoped lang="scss">

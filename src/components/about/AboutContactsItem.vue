@@ -18,7 +18,7 @@
   }
 
   .about-us__contacts-card__title {
-    font-weight: 400;
+    font-weight: 600;
     color: #666666;
   }
 </style>

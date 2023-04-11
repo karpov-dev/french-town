@@ -11,7 +11,7 @@
         </about-contacts-item>
 
         <about-contacts-item title="Адрес">
-          <formatted-address :address="service.address" :geo-point="service.geoPoint"/>
+          <formatted-address :address="service.address" :organization-id="service.yandexOrganizationId"/>
         </about-contacts-item>
 
         <about-contacts-item title="Часы работы">
@@ -34,9 +34,9 @@
   import {IService, ISocialMedia} from "../../db/types";
   import {DataManager} from "../../db/DataManager";
   import AboutFollowUs from "./AboutFollowUs.vue";
-  import FormattedPhone from "../output/formattedPhone.vue";
-  import FormattedEmail from "../output/formattedEmail.vue";
-  import FormattedAddress from "../output/formattedAddress.vue";
+  import FormattedPhone from "../ui/output/formattedPhone.vue";
+  import FormattedEmail from "../ui/output/formattedEmail.vue";
+  import FormattedAddress from "../ui/output/formattedAddress.vue";
 
   const service = ref<IService>({} as IService);
   const socialMedias = ref<Array<ISocialMedia>>([]);

@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import {computed, onMounted, ref} from "vue";
   import AboutFollowUs from "../../../about/AboutFollowUs.vue";
-  import IconText from "../../../icon/IconText.vue";
+  import IconText from "../../../ui/icon/IconText.vue";
   import UiMenu from "../../../menu/UiMenu.vue";
   import {IHeaderMenu, ISocialMedia} from "../../../../db/types";
   import {DataManager} from "../../../../db/DataManager";

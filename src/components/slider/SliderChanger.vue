@@ -6,21 +6,25 @@
 
 <script setup lang="ts">
   import SliderChangerCard from "./SliderChangerCard.vue";
-  import {CONFIG} from "../../config/config";
   import {onMounted, ref} from "vue";
   import {ISlide} from "../../db/types";
   import {DataManager} from "../../db/DataManager";
+  import {ISetting} from "../../db/types/ISetting";
 
   const slides = ref<Array<ISlide>>([]);
+  const settings = ref<ISetting>({} as ISetting);
+
   const slide = ref();
 
   let slideIndex = 1;
 
   onMounted(async () => {
     slides.value = await DataManager.getSlides();
+    settings.value = await DataManager.getSettings();
+
     slide.value = slides.value[0];
 
-    setInterval(changeSlide, CONFIG.SLIDER.TIME_TO_CHANGE_MS)
+    setInterval(changeSlide, settings.value.sliderTimeout);
   });
 
   function changeSlide() {

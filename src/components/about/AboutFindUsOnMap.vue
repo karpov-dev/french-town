@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  import AboutYandexMap from "../map/YandexMap.vue";
+  import AboutYandexMap from "../ui/map/YandexMap.vue";
   import {computed, onMounted, ref} from "vue";
   import {IService} from "../../db/types";
   import {DataManager} from "../../db/DataManager";

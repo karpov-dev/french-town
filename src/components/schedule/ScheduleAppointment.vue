@@ -1,6 +1,6 @@
 <template>
   <modal-window :is-open="isShowModal" @on:close="onCloseSchedule">
-    <schedule-appointment-card/>
+    <schedule-appointment-card @on:sent="onSent"/>
   </modal-window>
 
   <div class="buttons">
@@ -13,9 +13,10 @@
 <script setup lang="ts">
   import {router} from "../../router/router";
   import {routes} from "../../router/routes";
-  import ModalWindow from "../modal/ModalWindow.vue";
+  import ModalWindow from "../ui/modal/ModalWindow.vue";
   import ScheduleAppointmentCard from "./ScheduleAppointmentCard.vue";
   import {ref} from "vue";
+  import {toast} from "vue3-toastify";
 
   const isShowModal = ref<boolean>(false);
 
@@ -29,6 +30,11 @@
 
   function onAbout() {
     router.push(routes.about.name)
+  }
+
+  function onSent() {
+    isShowModal.value = false;
+    toast.success('Запрос на звонок успешно отправлен', {autoClose: 3000});
   }
 </script>
 

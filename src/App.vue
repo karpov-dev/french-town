@@ -26,9 +26,13 @@
   import {onMounted, ref} from "vue";
   import AboutContacts from "./components/about/AboutContacts.vue";
   import AboutFindUsOnMap from "./components/about/AboutFindUsOnMap.vue";
+  import AboutFeedback from "./components/about/AboutFeedback.vue";
 
   const isScrolledDown = ref<Boolean>(false);
 
+  //TODO: Open schedule from button
+  //TODO: Highlight selected service card
+  //TODO: Image changer
   onMounted(() => addEventListener('scroll', onScroll));
 
   function onScroll() {

@@ -10,5 +10,6 @@ export interface IService extends IIdentity {
   about: string,
   whySelectUs: string,
   email: string,
+  yandexOrganizationId: string,
   geoPoint: IGeopoint
 }

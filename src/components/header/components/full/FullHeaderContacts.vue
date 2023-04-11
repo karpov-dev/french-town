@@ -1,7 +1,7 @@
 <template>
   <div class="header__contacts">
     <icon-text file="address" :text="service.address">
-      <formatted-address :address="service.address" :geo-point="service.geoPoint"/>
+      <formatted-address :address="service.address" :organization-id="service.yandexOrganizationId"/>
     </icon-text>
 
     <icon-text file="clock" :text="service.workTime"/>
@@ -15,10 +15,10 @@
 </template>
 
 <script setup lang="ts">
-  import IconText from "../../../icon/IconText.vue";
+  import IconText from "../../../ui/icon/IconText.vue";
   import AboutFollowUs from "../../../about/AboutFollowUs.vue";
-  import FormattedPhone from "../../../output/formattedPhone.vue";
-  import FormattedAddress from "../../../output/formattedAddress.vue";
+  import FormattedPhone from "../../../ui/output/formattedPhone.vue";
+  import FormattedAddress from "../../../ui/output/formattedAddress.vue";
   import {DataManager} from "../../../../db/DataManager";
   import {IService, ISocialMedia} from "../../../../db/types";
   import {onMounted, ref} from "vue";

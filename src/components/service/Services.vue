@@ -1,9 +1,5 @@
 <template>
   <div class="services">
-    <modal-window :is-open="isShowModal" @on:close="onCloseSchedule">
-      <schedule-appointment-card/>
-    </modal-window>
-
     <div class="services__content wrap-content__container">
       <service-item class="wrap-content__item"
                     v-for="workArea of workAreas"
@@ -20,8 +16,8 @@
   import {IWorkArea} from "../../db/types";
   import {DataManager} from "../../db/DataManager";
   import ServiceItem from "./ServiceItem.vue";
-  import Spinner from "../spinners/Spinner.vue";
-  import ModalWindow from "../modal/ModalWindow.vue";
+  import Spinner from "../ui/spinners/Spinner.vue";
+  import ModalWindow from "../ui/modal/ModalWindow.vue";
   import ScheduleAppointmentCard from "../schedule/ScheduleAppointmentCard.vue";
 
   const workAreas = ref<Array<IWorkArea>>([]);

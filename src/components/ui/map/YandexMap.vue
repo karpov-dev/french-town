@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  import {IGeopoint} from "../../db/types/IGeopoint";
+  import {IGeopoint} from "../../../db/types/IGeopoint";
 
   const props = defineProps<{
     geoPoint: IGeopoint,

@@ -1,5 +1,6 @@
 import {DataSelector} from "./DataSelector";
 import {IHeaderMenu, IService, ISlide, ISocialMedia, IWorkArea} from "./types";
+import {ISetting} from "./types/ISetting";
 
 export class DataManager {
 
@@ -9,7 +10,8 @@ export class DataManager {
     SLIDE: 'slider',
     SOCIAL_MEDIA: 'social-media',
     WORK_AREA: 'work-area',
-    WORK_AREA_TYPES: 'work-area/{doc}/types'
+    WORK_AREA_TYPES: 'work-area/{doc}/types',
+    SETTINGS: 'settings'
   }
 
   public static async getService(): Promise<IService> {
@@ -36,6 +38,10 @@ export class DataManager {
 
   public static async getSlides(): Promise<Array<ISlide>> {
     return (await DataManager.getCollection(DataManager.COLLECTIONS.SLIDE));
+  }
+
+  public static async getSettings(): Promise<ISetting> {
+    return (await DataManager.getCollection(DataManager.COLLECTIONS.SETTINGS))?.[0];
   }
 
   public static async getCollection(collectionName: string): Promise<any> {

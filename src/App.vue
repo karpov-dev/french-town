@@ -30,7 +30,6 @@
 
   const isScrolledDown = ref<Boolean>(false);
 
-  //TODO: Open schedule from button
   //TODO: Highlight selected service card
   //TODO: Image changer
   onMounted(() => addEventListener('scroll', onScroll));

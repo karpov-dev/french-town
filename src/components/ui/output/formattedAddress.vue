@@ -25,7 +25,7 @@
   function getLinkByGeoPoint() {
     return props.geoPoint
         ? `https://yandex.ru/maps/?pt=${props.geoPoint.longitude},${props.geoPoint.latitude}&z=16$l=map`
-        : null;
+        : undefined;
   }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="mobile-header" :class="{'mobile-header__active-scroll': isActiveHeader || isOpenMenu}" @blur="onBlur" tabindex="0">
+  <div id="mobile-menu" class="mobile-header" :class="{'mobile-header__active-scroll': isActiveHeader || isOpenMenu}" tabindex="0">
     <img :src="menuSvg"
          alt="Menu"
          class="svg-icon menu__button"
@@ -18,7 +18,7 @@
   </div>
 
   <transition>
-    <div v-if="isOpenMenu" class="menu__expanded">
+    <div v-if="isOpenMenu" class="menu__expanded" @click="onBlur" tabindex="0">
       <ui-menu :menu-items="menuItems"/>
     </div>
   </transition>
@@ -49,6 +49,7 @@
     socialMedias.value = (await DataManager.getSocialMedias())?.filter((media: ISocialMedia) => media.isPhoneAvailable) as Array<ISocialMedia>;
 
     addEventListener('scroll', onScroll);
+    addEventListener('click', onClick);
   });
 
   function onScroll() {
@@ -61,6 +62,14 @@
 
   function onBlur() {
     isOpenMenu.value = false;
+  }
+
+  function onClick(event: any) {
+    const menu = document.getElementById('mobile-menu');
+
+    if (!menu?.contains(event.target) && isOpenMenu.value) {
+      isOpenMenu.value = false;
+    }
   }
 </script>
 

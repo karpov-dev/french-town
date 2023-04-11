@@ -1,24 +1,27 @@
 import {RouteRecordRaw} from "vue-router";
+import MainPage from "../pages/MainPage.vue";
+import ServicePage from "../pages/ServicePage.vue";
+import AboutPage from "../pages/AboutPage.vue";
 
 export const routes = {
   main: {
     path: '/',
     name: 'main',
-    component: () => import('../pages/MainPage.vue'),
+    component: MainPage,
     props: true,
   } as RouteRecordRaw,
 
   service: {
     path: '/service',
     name: 'service',
-    component: () => import('../pages/ServicePage.vue'),
+    component: ServicePage,
     props: true
   },
 
   about: {
     path: '/about',
     name: 'about',
-    component: () => import('../pages/AboutPage.vue'),
+    component: AboutPage,
     props: true
   }
 }

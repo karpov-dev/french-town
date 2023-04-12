@@ -6,6 +6,8 @@
 </template>
 
 <script setup lang="ts">
+  import {router} from "../../../../router/router";
+
   const props = defineProps<{
     text: string
   }>();

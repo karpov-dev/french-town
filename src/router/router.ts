@@ -6,7 +6,7 @@ const scrollBehavior = (to: any, from: any, savedPosition: any) => {
     setTimeout(() => {
       const element = document.getElementById(to.hash.replace(/#/, ''))
       if (element && element.scrollIntoView) {
-        element.scrollIntoView({block: 'end', behavior: 'smooth'})
+        element.scrollIntoView({block: 'start', behavior: 'smooth'})
       }
     }, 500)
 

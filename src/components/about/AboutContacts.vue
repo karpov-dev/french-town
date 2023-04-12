@@ -21,6 +21,10 @@
         <about-contacts-item title="Социальные сети">
           <about-follow-us style="height: 35px" :medias="socialMedias"/>
         </about-contacts-item>
+
+        <about-contacts-item title="Оцените нас">
+          <iframe src="https://yandex.ru/sprav/widget/rating-badge/95025492147?type=rating" width="150" height="50" frameborder="0"></iframe>
+        </about-contacts-item>
       </div>
     </card>
   </card-post-block>

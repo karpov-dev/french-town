@@ -1,12 +1,12 @@
 <template>
-  <div id="mobile-menu" class="mobile-header" :class="{'mobile-header__active-scroll': isActiveHeader || isOpenMenu}" tabindex="0">
+  <div class="mobile-header" :class="{'mobile-header__active-scroll': isActiveHeader || isMenuOpened}" tabindex="0">
     <img :src="menuSvg"
          alt="Menu"
-         class="svg-icon menu__button"
+         class="svg-icon mobile-header__menu-button"
          @click="onOpen"
     >
 
-    <icon-text v-if="isActiveHeader || isOpenMenu"
+    <icon-text v-if="isActiveHeader || isMenuOpened"
                   path="images"
                   file="logo"
                   extension="png"
@@ -17,9 +17,13 @@
     <about-follow-us :medias="socialMedias"/>
   </div>
 
-  <transition>
-    <div v-if="isOpenMenu" class="menu__expanded" @click="onBlur" tabindex="0">
-      <ui-menu :menu-items="menuItems"/>
+  <transition name="fade">
+    <div v-if="isMenuOpened">
+      <div class="mobile-header__opened-menu-layout" @click="onBlur"/>
+
+      <div class="mobile-header__opened-menu">
+        <ui-menu :menu-items="menuItems" @click="onBlur"/>
+      </div>
     </div>
   </transition>
 </template>
@@ -34,7 +38,7 @@
 
   const isActiveHeader = ref<Boolean>(false);
 
-  const isOpenMenu = ref<Boolean>(false);
+  const isMenuOpened = ref<Boolean>(false);
 
   const menuItems = ref<Array<IHeaderMenu>>([]);
 
@@ -49,7 +53,7 @@
     socialMedias.value = (await DataManager.getSocialMedias())?.filter((media: ISocialMedia) => media.isPhoneAvailable) as Array<ISocialMedia>;
 
     addEventListener('scroll', onScroll);
-    addEventListener('click', onClick);
+
   });
 
   function onScroll() {
@@ -57,19 +61,11 @@
   }
 
   function onOpen() {
-    isOpenMenu.value = !isOpenMenu.value;
+    isMenuOpened.value = !isMenuOpened.value;
   }
 
   function onBlur() {
-    isOpenMenu.value = false;
-  }
-
-  function onClick(event: any) {
-    const menu = document.getElementById('mobile-menu');
-
-    if (!menu?.contains(event.target) && isOpenMenu.value) {
-      isOpenMenu.value = false;
-    }
+    isMenuOpened.value = false;
   }
 </script>
 
@@ -86,12 +82,21 @@
     transition: 0.5s background-color;
   }
 
-  .menu__expanded {
+  .mobile-header__opened-menu-layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .mobile-header__opened-menu {
     height: 100%;
     width: 100%;
   }
 
-  .menu__button {
+  .mobile-header__menu-button {
     width: 30px;
     height: 30px;
     border-radius: 8px;
@@ -103,6 +108,5 @@
     height: 20px;
     padding: 10px 10px;
     color: black;
-
   }
 </style>

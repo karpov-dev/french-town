@@ -24,7 +24,9 @@
   });
 
   function onScroll() {
-    isActiveHeader.value = window.scrollY > 100;
+    if (typeof window !== "undefined") {
+      isActiveHeader.value = window.scrollY > 100;
+    }
   }
 </script>
 

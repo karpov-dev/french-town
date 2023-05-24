@@ -4,18 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
+    "dev": "node ./src/server.js",
+    "serve": "NODE_ENV=production node ./src/server.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr src/main-server.js --outDir dist/server",
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "@toneflix-code/flickity-vue": "^1.0.1",
     "axios": "^1.3.5",
+    "express": "^4.18.2",
     "firebase": "^9.19.1",
     "sass": "^1.60.0",
     "vue": "^3.2.47",
-    "vue-3-slider-component": "^0.1.0",
     "vue-router": "^4.1.6",
     "vue3-toastify": "^0.1.6",
     "vuex": "^4.1.0"

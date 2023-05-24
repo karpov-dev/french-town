@@ -4,6 +4,6 @@
 
 <script setup lang="ts">
   const props = defineProps<{
-    email: string
+    email: any
   }>();
 </script>

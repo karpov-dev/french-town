@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from "vue-router";
+import {createMemoryHistory, createRouter, createWebHistory} from "vue-router";
 import {routes} from "./routes";
 
 const scrollBehavior = (to: any, from: any, savedPosition: any) => {
@@ -18,8 +18,10 @@ const scrollBehavior = (to: any, from: any, savedPosition: any) => {
   return {top: 0}
 }
 
+const baseUrl = import.meta.env.BASE_URL
+
 export const router = createRouter({
-  history: createWebHistory(),
+  history: import.meta.env.SSR ? createMemoryHistory(baseUrl) : createWebHistory(baseUrl),
   routes: Object.values(routes),
   scrollBehavior
 })

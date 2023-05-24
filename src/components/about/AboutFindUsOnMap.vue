@@ -15,10 +15,10 @@
   const points = computed(initPoints);
   let yMapInited = ref<boolean>(false);
 
-  //@ts-ignore
-  ymaps.ready(() => yMapInited.value = true);
-
-  //TODO: как-то красивее сделать
+  if (typeof window !== "undefined") {
+    //@ts-ignore
+    ymaps.ready(() => yMapInited.value = true);
+  }
   function initPoints() {
     if (!yMapInited.value || !service.value.geoPoint) return [];
 

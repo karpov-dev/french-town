@@ -7,9 +7,9 @@
   import {computed} from "vue";
 
   const props = defineProps<{
-    address: string
+    address: any
     geoPoint?: IGeopoint
-    organizationId?: string
+    organizationId?: any
   }>();
 
   const yMapLink = computed(() => {

@@ -31,4 +31,10 @@
     width: 100vw;
     height: 100vh;
   }
+
+  @media only screen and (max-width: 850px) {
+    .slider {
+      height: 70vh;
+    }
+  }
 </style>

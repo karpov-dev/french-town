@@ -9,7 +9,7 @@
   import {router} from "../../../../router/router";
 
   const props = defineProps<{
-    text: string
+    text: any
   }>();
 </script>
 

@@ -4,6 +4,6 @@
 
 <script setup lang="ts">
   const props = defineProps<{
-    phone: string
+    phone: any
   }>();
 </script>

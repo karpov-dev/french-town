@@ -1,6 +1,6 @@
 <template>
   <div class="header__contacts">
-    <icon-text file="address" :text="service.address">
+    <icon-text v-if="service.address" file="address" :text="service.address">
       <formatted-address :address="service.address" :organization-id="service.yandexOrganizationId"/>
     </icon-text>
 

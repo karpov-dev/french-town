@@ -24,6 +24,7 @@
 
         <about-contacts-item title="Оцените нас">
           <iframe src="https://yandex.ru/sprav/widget/rating-badge/95025492147?type=rating" width="150" height="50" frameborder="0"></iframe>
+          <iframe class="zoon" height="80" width="250" frameborder="0" :src="`https://zoon.ru/wg/comments/?frame_id=${new Date().getTime()}&id=64723486a0e5955c110c6ffe&locale=ru_RU&type=240x80&stars=all&style=white&scale=0.3`"></iframe>
         </about-contacts-item>
       </div>
     </card>
@@ -75,5 +76,10 @@
     .about-contacts__contacts-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  .zoon {
+    -webkit-transform: scale(0.632);
+    -webkit-transform-origin: 0 0;
   }
 </style>
